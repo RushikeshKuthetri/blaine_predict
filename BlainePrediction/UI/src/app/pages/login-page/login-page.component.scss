@@ -1,0 +1,36 @@
+
+
+.main{
+    height: 500px;
+    background: radial-gradient(black, transparent);
+    background-position: 50%;
+    background-size: cover !important;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:url('../../../assets/background1.png');
+    height: 100vh;
+    .loginBox{
+        background-color: #fff;
+        padding: 50px;
+        h3{
+            color: #0009;
+            font-style: oblique;
+        }
+        button{
+            padding: 6px;
+            color: #000;
+            background: #fff500;
+            border: none;
+            font-size: 12px;
+            padding: 11px;
+            font-family: revert;
+        }
+    }
+}
+
+.btnBox{
+    justify-content: center;
+}
+

@@ -1,0 +1,11 @@
+.dateTimebox{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    input{
+        height: auto;
+        border: 1px solid #efefef;
+        outline: none;
+        width: 100%;
+    }
+}

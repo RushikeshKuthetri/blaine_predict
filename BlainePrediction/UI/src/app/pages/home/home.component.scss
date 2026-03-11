@@ -1,0 +1,106 @@
+.meter_row{
+    margin-top: 17px !important;
+}
+
+h4{
+    font-size:15px 
+}
+
+ng-multiselect-dropdown{
+    width:100%;
+}
+
+.text-yellow{
+    color:#000;
+    font-size:20px;
+}
+
+.accuracyCard{
+    margin-top: auto;
+    margin-bottom: 25px;
+}
+
+.accuracy_value{
+    font-size: 70px !important;
+    font-weight: 700 !important;
+}
+
+
+
+
+:ng-deep
+    .multiselect-item-checkbox[_ngcontent-obu-c1] input[type=checkbox]+div[_ngcontent-obu-c1]:before {
+        box-sizing: content-box;
+        content: "";
+        color: #fff500 !important;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 14px;
+        height: 14px;
+        margin-top: -9px;
+        border: 2px solid #fff500 !important;
+        text-align: center;
+        transition: .4s;
+    }
+
+    .multiselect-item-checkbox[_ngcontent-egx-c1] input[type=checkbox][_ngcontent-egx-c1]:checked+div:before {
+        -webkit-animation: .2s ease-in;
+        animation: .2s ease-in;
+        background: red;
+    }
+
+    .predicted_value{
+        font-size: 92px !important;
+        font-weight: 700 !important;
+    }
+
+    .mh-38{min-height: 38px;}
+
+    .detail{ font-size: 23px !important;    }
+
+    .terms{ margin-left: 2px; }
+
+    .header-heading{
+        font-size: 37px;
+    font-weight: 500;
+    }
+
+    .second_card{
+        padding: 60px;
+        /* padding: 66px; */
+        margin-top: 16px;
+    }
+
+    .third_card{
+        width: 48%;
+    }
+
+    .date_time_stmp{
+        font-size:15px;
+        font-weight: 500;
+    }
+
+    
+    @media (max-width: 767px){
+    .gap{gap: 1rem}
+}
+
+.logout{
+    margin-left: 10px;
+}
+
+.export{
+    margin-left: 10px;
+}
+
+.pull-right{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.recommendedSubmit{
+    margin-top: 60px;
+}
+    
+

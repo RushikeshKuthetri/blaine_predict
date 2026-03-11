@@ -1,0 +1,106 @@
+mwl-gauge {
+    width: 15px;
+    height: 15px;
+    display: block;
+    padding: 10px;
+  }
+  mwl-gauge > .gauge > .dial {
+    stroke: #eee;
+    stroke-width: 2;
+    fill: rgba(0, 0, 0, 0);
+  }
+  mwl-gauge > .gauge > .value {
+    stroke: rgb(47, 227, 255);
+    stroke-width: 1;
+    fill: rgba(0, 0, 0, 0);
+  }
+  mwl-gauge > .gauge > .value-text {
+    fill: rgb(47, 227, 255);
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+  }
+
+  .chartRow{
+    margin-left:0px !important;
+    margin-right: 0px !important;
+  }
+
+  .detail{
+    font-size:18px !important;
+    padding: 5px 5px 5px 5px;
+
+}
+
+.chart_card{
+  min-height: 100%;
+    overflow: scroll;
+}
+
+.value_span{
+  align-items: center;
+  justify-content: center;
+  margin-top: 147px;
+  font-size: 16px;
+  font-weight: 800;
+  span{
+    width: 28px;
+    height: 28px;
+    // background: #fff500;
+    text-align: center;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+}
+
+.noDataBox{
+  padding:10px;
+
+}
+
+.text-yellow{
+  color:#000;
+  font-size:20px;
+}
+
+
+
+
+
+
+::ng-deep{
+  svg{
+    // width:100% !important;
+    // height: 160px !important;
+    // padding-left: 20px;
+    // padding-top: 20px;
+  }
+  .svg-container2 {
+    display: inline-block;
+    width: 100%;
+    padding-bottom: 55%; /* aspect ratio */
+    vertical-align: top;
+    overflow: hidden;
+  }
+  .svg-content-responsive {
+    display: inline-block;
+    position: absolute;
+    top: 44px;
+    left: 0;
+    
+  }
+
+  text:last-child{
+    transform: rotate(90) translate(256px, 2px) !important;
+  }
+}
+
+
+
+
+
+
+  

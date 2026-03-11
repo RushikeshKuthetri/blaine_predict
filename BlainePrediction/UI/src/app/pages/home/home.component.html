@@ -1,0 +1,335 @@
+
+<header class="tonav">
+  <nav class="navbar navbar-expand-md">
+    <a class="navbar-brand" href="#"><img [src]="imagePath.logo" style="width: 160px"></a>
+    <h1 class="m-auto header-heading">{{title}} Prediction </h1>
+    <div class="profile">
+      <span class="ml-10"><b>Welcome</b> {{username}}</span>
+      <a (click)="logout()" class="logout"> <img [src]="imagePath.logoutImg" style="width: 20px"></a>
+    </div>
+  </nav>
+</header>
+
+<div class="container-fluid new_dash">
+  <div class="card mt-3">
+    <div class="row align-items-center gap">
+      <div class="col-xl-2 col-lg-2 col-md-4 col-sm-12 col-12 px-2">
+        <div class="upper-tiles border-0 mb-0">
+          <div class="d-flex flex-column">
+            <label class="mb-2">Plant</label>
+            <select class="form-select" (change)="getMillsBasesPlant()" [(ngModel)]="payloadData.Plant_Code">
+              <option value="null" disabled>--Select Plant Here --</option>
+              <option *ngFor="let item of plantData" [value]="item.value">{{item.viewValue}}</option>
+            </select>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-xl-2 col-lg-2 col-md-4 col-sm-12 col-12 px-2">
+        <div class="upper-tiles  border-0 mb-0">
+          <div class="d-flex flex-column">
+            <label class="mb-2">Mill No. </label>
+            <select class="form-select" (change)="getGradeBasesPlantMills()" [(ngModel)]="payloadData.Mill">
+              <option value="null" disabled>--Select Mill Here --</option>
+              <option *ngFor="let item of millsData" [value]="item.value">{{item.viewValue}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-2 col-lg-2 col-md-4 col-sm-12 col-12 px-2">
+        <div class="upper-tiles border-0 mb-0">
+          <div class="d-flex flex-column">
+            <label class="mb-2">{{drodownTitle}} </label>
+            <select class="form-select" (change)="getModelBasedOnGrade()" [(ngModel)]="payloadData.Grade">
+              <option value="null" disabled>--Select Grade Here --</option>
+              <option *ngFor="let item of gradeData" [value]="item.value">{{item.viewValue}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 col-12 px-2">
+        <div class="d-flex flex-column h-100">
+          <label class="mb-2">Select Model</label>
+          <div class="d-flex align-items-center mh-38">
+            <div class="form-check" *ngFor="let item of modelData">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" [value]="item.value"
+                [(ngModel)]="payloadData.Model_No">
+              <span class="form-check-label ml-2">
+                {{item.viewValue}}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-3 col-lg-3 col-md-5 col-sm-12 col-12 px-2">
+        <div class="upper-tiles border-0 mb-0">
+          <div class="d-flex flex-column h-100">
+            <label class="mb-2">Date & Time</label>
+            <div class="form-group mh-38">
+              <span>{{payloadData.date}} {{payloadData.time}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-1 col-lg-1 col-md-4 col-sm-12 col-12 px-2">
+        <button type="button" class="btn btn btnfrst submitBtn" (click)="onSubmit()">Submit</button>
+      </div>
+    </div>
+  </div>
+
+
+  <app-loader [hidden]="!flags.showLoader"></app-loader>
+  <div class="main" [hidden]="!flags.showData">
+    <div class="row mt-3 gap">
+      <div class="col-xl-3 col-lg-2 col-md-6 col-sm-12 col-12"
+        (dblclick)="getBlainePredictionChartDataForActualBlaine();openModel(predictedblaingraphtemplate)">
+        <div class="card h-100">
+          <div class="score h-75 w-100 text-center d-flex flex-column pb-2">
+            <h1 class="m-auto predicted_value">{{title=='Blaine'?datasource.Predicted_Blaine:datasource.Predicted_Blaine.toFixed(1)}}</h1>
+            <!-- <small class="m-auto date_time_stmp">{{historyDate}}</small> -->
+            <small class="m-auto date_time_stmp">{{payloadData.date}} {{payloadData.time}}</small>
+            <!-- <h1 class="m-auto predicted_value"  >400</h1> -->
+          </div>
+          <div class="detail text-center">
+            Predicted {{title}} {{unit}}
+
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 col-12">
+        <div class="card h-100 w-100">
+          <h6 class="mb-2">Is Recommendation Acknowledged? </h6>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="Yes"
+              [(ngModel)]="isRecommendation">
+            <label class="form-check-label" for="exampleRadios1">
+              Yes
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="No"
+              [(ngModel)]="isRecommendation">
+            <label class="form-check-label" for="exampleRadios2">
+              No
+            </label>
+          </div>
+          <div class="row">
+            <div class="col-12 pull-right">
+              <button type="button" class="btn btn btnfrst pull-right submitBtn recommendedSubmit"
+                [disabled]="isRecommendation==null" (click)="updateRecommendation()">Submit</button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12 mt-lg-0 mt-md-3">
+        <div class="card h-100 w-100">
+          <h6 class="mb-2">What adjustment made to control the {{title}}</h6>
+          <div class="row m-0">
+            <div class="col-6" *ngFor="let item of adjustmentItems;let i=index">
+              <div class="form-check">
+                <input type="checkbox" [value]="item.Iot_Tag_Id" (change)="checkAdjustment($event)"
+                  class="form-check-input" [id]="i" [checked]="item.isChecked">
+                <label class="form-check-label text-break" for="defaultCheck1">
+                  {{item.Generic_Description}}
+                </label>
+              </div>
+              <!-- <div class="form-check">
+                   <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                   <label class="form-check-label" for="defaultCheck1">
+                   Bag house fan Speed
+                   </label>
+                 </div>
+                 <div class="form-check">
+                   <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                   <label class="form-check-label" for="defaultCheck1">
+               Ball Mill Separator fan Speed
+                   </label>
+                 </div> -->
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-12 pull-right">
+              <button type="button" class="btn btn btnfrst pull-right submitBtn"
+                (click)="updateAdjustment()">Submit</button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+    <div class="row mt-3 pb-3">
+
+      <div class="col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12 p-0">
+        <div>
+          <ng-container #outlet>
+          </ng-container>
+        </div>
+        <ng-template #content>
+          <app-gauge [datasource]="datasource" [payload]="payloadData" [texttitle]="title" [hidden]="!flags.showChart"
+            *ngIf="datasource && datasource.result!='No Record Found' && datasource.Tags_Data.length>0"></app-gauge>
+        </ng-template>
+      </div>
+      <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12">
+        <div class="card h-100">
+          <h6 class="text-center font-weight-bold">Last 2 hours {{title}}</h6>
+          <div class="row">
+            <div class="col-4 col-md-4 col-sm-4">
+              <input type="number" class="form-control" placeholder="Enter Actual Blaine" [min]='0'
+                [(ngModel)]="userActualBlaine">
+            </div>
+            <div class="col-4 col-md-4 col-sm-4">
+              <!-- <input class="form-control" id="appt-time" type="time" name="appt-time" step="3600"> -->
+              <select class="form-select" [(ngModel)]="blainHour" (click)="getCurrentHourDropDown()">
+                <option value="null" disabled>--Select Hours Here --</option>
+                <option *ngFor="let item of hoursData" [value]="item">{{item}}</option>
+              </select>
+            </div>
+            <div class="col-4 col-md-4 col-sm-4">
+              <button type="button" class="btn btn btnfrst submitBtn"
+                [disabled]="(userActualBlaine==null ||  blainHour==null)" (click)="updateBlain()">Submit</button>
+            </div>
+
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-striped" *ngIf="tableData && tableData.length>0">
+              <thead class="thead-dark">
+                <tr>
+
+                  <th scope="col">Time</th>
+                  <th scope="col">Predicted {{title}}</th>
+                  <th scope="col">Actual {{title}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of tableData">
+                  <td>{{item.Date_Time.slice(11,16)}}</td>
+                  <td>{{item.pb}}</td>
+                  <td>{{item.Actual_Blaine?item.Actual_Blaine: "To be filled"}}</td>
+                </tr>
+              </tbody>
+
+            </table>
+            <div *ngIf="tableData && tableData.length==0">
+              <P>No Data Found</P>
+            </div>
+          </div>
+          <div  class="accuracyCard" *ngIf="isRole=='admin'" (dblclick)="getAccuracyLineData();openModel(accuracyFraph)">
+            
+            <div class="card h-100" *ngIf="accuracy10>0">
+              <div class="score h-75 w-100 text-center d-flex flex-column pb-2" >
+                <h1 class="m-auto accuracy_value">{{accuracy10}}%</h1>
+                <small class="m-auto date_time_stmp">±10</small>
+                <!-- <h1 class="m-auto predicted_value"  >400</h1> -->
+              </div>
+              <div class="detail text-center">
+                <h6 class="text-center font-weight-bold">MTD Blaine Accuracy percentage (%)</h6>
+    
+              </div>
+              <!-- <app-bar-graph [data]="accuracyBarData"></app-bar-graph> -->
+            </div>
+
+            <div class="noDataBox" *ngIf="accuracy10==0">
+              <span class="text-center text-yellow">No Data Found</span>
+            </div>
+          </div>
+        </div>
+
+       
+        
+      </div>
+      
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="card mt-3">
+          <div class="row">
+            <div class="col-xs-12 col-12 col-md-12">
+              <label>Export Data</label>
+              <div class="form-group row d-flex">
+                <div class="col-9">
+                  <app-datetimepicker (dateTimeRange)="getExportDateRange($event)" type="rangepicker"  [selectedRange]='dateRange' placeholder="Select Date range to Export Data"></app-datetimepicker>
+                </div>
+                <div class="col-3 offset-0">
+                  <a (click)="export()" class="export"> <img [src]="imagePath.exportImg" style="width: 35px"></a>
+                </div>
+                
+                <!-- <input type="text" placeholder="Select Date range to export CSV" class="form-control" bsDaterangepicker
+                  [(bsValue)]="dateRange" [bsConfig]="{withTimepicker: true}"> -->
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card mt-3">
+          <div class="row">
+            <div class="col-xs-12 col-12 col-md-12">
+              <label>Previous Data</label>
+              <div class="form-group row d-flex">
+                <div class="col-9">
+                  <app-datetimepicker (dateTime)="getHistoryDate($event)" type="datepicker"  [selectedRange]='historyDate' placeholder="Select Date for History Date"></app-datetimepicker>
+                </div>
+                <!-- <input type="text" placeholder="DateTimepicker" class="form-control" [(bsValue)]="historyDate"
+                  [disabled]="isDisabledDateFilter"
+                  [bsConfig]="{withTimepicker: true,  keepDatepickerOpened: true, dateInputFormat: 'MMMM Do YYYY, h:mm'}"
+                  bsDatepicker> -->
+                <div class="col-3">
+                  <button type="button" class="btn btn btnfrst submitBtn" (click)="getPreviousData()">Submit</button>
+                </div>
+                
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="noDataBox" *ngIf="flags.showNoData">
+    <span class="text-center text-yellow">Mill in Shutdown State</span>
+  </div>
+</div>
+
+
+<ng-template #predictedblaingraphtemplate>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Predicted vs Actual {{title}} Trend</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-datetimepicker (dateTimeRange)="getDateRange($event)" type="rangepicker"  [selectedRange]='actualPredictedChartDateRange' placeholder="Select Date range"></app-datetimepicker>
+    <!-- <input type="text" placeholder="Select Date range for Graph " class="form-control graphDateFilter" bsDaterangepicker
+      [(bsValue)]="actualPredictedChartDateRange" [bsConfig]="{withTimepicker: true}"
+      (bsValueChange)="onSelectDateRange($event)"> -->
+    <app-line-chart [data]="chartDatasource" [payload]="payloadData" [daterange]="actualPredictedChartDateRange" *ngIf="showChart"></app-line-chart>
+  </div>
+</ng-template>
+
+<ng-template #accuracyFraph>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">MTD {{title}} Accuracy percentage (%)</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-line-chart [data]="accuracyData"></app-line-chart>
+  </div>
+</ng-template>
+
+
+
+
