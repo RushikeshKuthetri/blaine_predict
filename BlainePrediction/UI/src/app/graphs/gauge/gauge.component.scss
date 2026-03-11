@@ -1,25 +1,34 @@
 mwl-gauge {
-    width: 15px;
-    height: 15px;
-    display: block;
-    padding: 10px;
-  }
+  width: 12px;
+  height: 12px;
+  display: block;
+  padding: 8px;
+}
   mwl-gauge > .gauge > .dial {
-    stroke: #eee;
-    stroke-width: 2;
-    fill: rgba(0, 0, 0, 0);
-  }
-  mwl-gauge > .gauge > .value {
-    stroke: rgb(47, 227, 255);
-    stroke-width: 1;
-    fill: rgba(0, 0, 0, 0);
-  }
-  mwl-gauge > .gauge > .value-text {
-    fill: rgb(47, 227, 255);
-    font-family: sans-serif;
-    font-weight: bold;
-    font-size: 1em;
-  }
+  stroke: #eee;
+  stroke-width: 2;
+  fill: transparent;
+}
+ mwl-gauge > .gauge > .value {
+  stroke: #f97316; /* Tailwind orange-500 */
+  stroke-width: 2;
+  fill: transparent;
+}
+ mwl-gauge > .gauge > .value-text {
+  fill: #f97316;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+::ng-deep mwl-gauge svg text {
+  fill: #d1d5db; /* light gray for dark theme */
+  font-size: 12px;
+}
+
+.dark ::ng-deep mwl-gauge svg text {
+  fill: #e5e7eb;
+}
 
   .chartRow{
     margin-left:0px !important;

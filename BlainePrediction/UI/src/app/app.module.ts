@@ -29,6 +29,10 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 // import { faCalendar, faClock } from "@fortawesome/free-regular-svg-icons";
 import { DatetimepickerComponent } from './common/datetimepicker/datetimepicker.component';
 import { environment } from '../environments/environment';
+import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
+import { HeaderComponent } from './common/header/header.component';
+import { SidebrComponent } from './common/sidebr/sidebr.component';
+import { FooterComponent } from './common/footer/footer.component';
 
 // export function MSALInstanceFactory(): IPublicClientApplication {
 //   return new PublicClientApplication({
@@ -51,6 +55,10 @@ import { environment } from '../environments/environment';
 // }
 @NgModule({
   declarations: [
+     HeaderComponent,
+     SidebrComponent,
+      FooterComponent,
+     MainLayoutComponent,
     AppComponent,
     GaugeComponents,
     LoginPageComponent,
@@ -61,6 +69,7 @@ import { environment } from '../environments/environment';
     DatetimepickerComponent
   ],
   imports: [
+   
     BrowserModule,
     AppRoutingModule,
     MsalModule,

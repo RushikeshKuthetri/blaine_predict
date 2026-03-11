@@ -1,0 +1,58 @@
+<!-- main-layout.component.html -->
+<div class="flex flex-col h-screen overflow-hidden bg-[var(--bg-color)]">
+
+  <!-- HEADER -->
+  <app-header></app-header>
+
+  <!-- BODY -->
+  <div class="flex flex-1 overflow-hidden">
+
+    <!-- SIDEBAR — no mt-3 wrapper, flush with header -->
+    <app-sidebr [open]="drawerOpen" (openChange)="drawerOpen = $event" [collapsed]="collapsed"
+      (collapsedChange)="collapsed = $event"></app-sidebr>
+
+    <!-- CONTENT AREA — matches React's dynamic collapsed logic -->
+    <div class="flex-1 flex flex-col overflow-hidden transition-all duration-300"
+      [ngClass]="collapsed ? 'lg:ml-20' : 'lg:ml-64'">
+
+      <!-- TOP BAR -->
+      <!-- <div class="flex items-center justify-between pr-6 pl-3 pt-3 shrink-0">
+        <div class="text-sm font-semibold text-[var(--text-color)]"></div>
+        <app-searchbar></app-searchbar>
+      </div> -->
+
+      <!-- MAIN AREA -->
+      <main class="flex flex-col overflow-hidden px-2 sm:px-3 md:px-4 lg:pr-6 lg:pl-2 pb-2 sm:pb-3 mt-2"
+        style="height: calc(100vh - 70px)">
+
+        <!-- SCROLLABLE CONTAINER — matches React's collapsed max-width logic -->
+        <div class="
+    flex-1
+   sm:mt-3 md:mt-2
+   px-2
+    rounded-xl sm:rounded-2xl
+    bg-[var(--bg-leftdrawer)]
+    [box-shadow:var(--left-drawer-shadow)]
+    transition-all duration-300
+    overflow-y-auto scroll-smooth custom-scrollbar
+    w-full mx-auto
+  " [ngClass]="collapsed ? 'lg:max-w-none' : 'lg:max-w-[1400px] xl:max-w-[1700px]'">
+
+          <!-- Breadcrumb -->
+          <div class="mb-2 sm:mb-3">
+            <!-- <app-breadcrumb></app-breadcrumb> -->
+          </div>
+
+          <!-- Routed Page Content -->
+          <router-outlet></router-outlet>
+
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <app-footer></app-footer>
+
+</div>

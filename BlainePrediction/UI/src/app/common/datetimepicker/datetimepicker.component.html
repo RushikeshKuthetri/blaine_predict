@@ -1,11 +1,33 @@
+<!-- Date Picker -->
+<label *ngIf="type=='datepicker'" class="block w-full">
+   <input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" (dateTimeChange)="onselectDateTime($event)"
+      placeholder="Date Time" class="date-input w-full px-2 py-[4px] text-[13px]
+           rounded-lg border
+           bg-[var(--input-enable-bg)]
+           text-[var(--select-input-value)]
+           border-[var(--input-enable-border)]
+           focus:outline-none
+           focus:border-[#888888]
+           focus:ring-1 focus:ring-[#888888]
+           transition-all duration-200" />
 
-<label *ngIf="type=='datepicker'" class="dateTimebox">
-   <input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1"  class="form-control" (dateTimeChange)="onselectDateTime($event)"
-      placeholder="Date Time">
-   <owl-date-time  [pickerType]="'calendar'" #dt1></owl-date-time>
+   <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
 </label>
-<label *ngIf="type=='rangepicker'" class="dateTimebox">
-   <input [owlDateTimeTrigger]="dt10" class="form-control" (dateTimeChange)="onselectDateTimeRange($event)" [owlDateTime]="dt10"
-      [selectMode]="'range'" placeholder="Select Date Range"  [max]="maxDate" [(ngModel)]="selectedRange">
-   <owl-date-time  [pickerType]="'calendar'" #dt10></owl-date-time>
+
+
+<!-- Range Picker -->
+<label *ngIf="type=='rangepicker'" class="block w-full">
+   <input [owlDateTimeTrigger]="dt10" [owlDateTime]="dt10" [(ngModel)]="selectedRange"
+      (dateTimeChange)="onselectDateTimeRange($event)" [selectMode]="'range'" [max]="maxDate"
+      placeholder="Select Date Range" class="date-input w-full px-2 py-[4px] text-[13px]
+           rounded-lg border
+           bg-[var(--input-enable-bg)]
+           text-[var(--select-input-value)]
+           border-[var(--input-enable-border)]
+           focus:outline-none
+           focus:border-[#888888]
+           focus:ring-1 focus:ring-[#888888]
+           transition-all duration-200" />
+
+   <owl-date-time [pickerType]="'calendar'" #dt10></owl-date-time>
 </label>

@@ -1,105 +1,244 @@
-
-<header class="tonav">
+<!-- <header class="tonav">
   <nav class="navbar navbar-expand-md">
     <a class="navbar-brand" href="#"><img [src]="imagePath.logo" style="width: 160px"></a>
-    <h1 class="m-auto header-heading">{{title}} Prediction </h1>
+    <h1 class="font-semibold">{{title}} Prediction </h1>
     <div class="profile">
       <span class="ml-10"><b>Welcome</b> {{username}}</span>
       <a (click)="logout()" class="logout"> <img [src]="imagePath.logoutImg" style="width: 20px"></a>
     </div>
   </nav>
-</header>
+</header> -->
 
-<div class="container-fluid new_dash">
-  <div class="card mt-3">
-    <div class="row align-items-center gap">
-      <div class="col-xl-2 col-lg-2 col-md-4 col-sm-12 col-12 px-2">
-        <div class="upper-tiles border-0 mb-0">
-          <div class="d-flex flex-column">
-            <label class="mb-2">Plant</label>
-            <select class="form-select" (change)="getMillsBasesPlant()" [(ngModel)]="payloadData.Plant_Code">
-              <option value="null" disabled>--Select Plant Here --</option>
-              <option *ngFor="let item of plantData" [value]="item.value">{{item.viewValue}}</option>
-            </select>
-          </div>
+<h5 class="text-[18px] font-semibold text-[var(--title)] mb-2 ml-2">
+  Blaine Prediction
+</h5>
 
-        </div>
-      </div>
-      <div class="col-xl-2 col-lg-2 col-md-4 col-sm-12 col-12 px-2">
-        <div class="upper-tiles  border-0 mb-0">
-          <div class="d-flex flex-column">
-            <label class="mb-2">Mill No. </label>
-            <select class="form-select" (change)="getGradeBasesPlantMills()" [(ngModel)]="payloadData.Mill">
-              <option value="null" disabled>--Select Mill Here --</option>
-              <option *ngFor="let item of millsData" [value]="item.value">{{item.viewValue}}</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-2 col-lg-2 col-md-4 col-sm-12 col-12 px-2">
-        <div class="upper-tiles border-0 mb-0">
-          <div class="d-flex flex-column">
-            <label class="mb-2">{{drodownTitle}} </label>
-            <select class="form-select" (change)="getModelBasedOnGrade()" [(ngModel)]="payloadData.Grade">
-              <option value="null" disabled>--Select Grade Here --</option>
-              <option *ngFor="let item of gradeData" [value]="item.value">{{item.viewValue}}</option>
-            </select>
-          </div>
-        </div>
+<!-- main container -->
+<div class="w-full border  border-[var(--input-enable-border)] rounded-lg">
+
+
+  <div class=" px-2 pb-2 ">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 items-end">
+
+      <!-- Plant native select input field -->
+      <div class="flex flex-col">
+        <label class="text-[13px] font-semibold uppercase tracking-[0.02em] text-[var(--text-color)]">
+          Plant
+        </label>
+
+        <select class="w-full min-h-[29px] px-2 text-[13px] rounded-lg
+        bg-[var(--input-enable-bg)]
+        border border-[var(--input-enable-border)]
+        text-[var(--select-input-value)]
+        outline-none
+        focus:border-[#888888]
+        cursor-pointer
+        transition-all duration-200" (change)="getMillsBasesPlant()" [(ngModel)]="payloadData.Plant_Code">
+
+          <option value="null" disabled>Select Plant</option>
+
+          <option *ngFor="let item of plantData" [value]="item.value">
+            {{item.viewValue}}
+          </option>
+
+        </select>
       </div>
 
-      <div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 col-12 px-2">
-        <div class="d-flex flex-column h-100">
-          <label class="mb-2">Select Model</label>
-          <div class="d-flex align-items-center mh-38">
-            <div class="form-check" *ngFor="let item of modelData">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" [value]="item.value"
-                [(ngModel)]="payloadData.Model_No">
-              <span class="form-check-label ml-2">
-                {{item.viewValue}}
-              </span>
-            </div>
-          </div>
+      <!-- Mill native select input field -->
+      <div class="flex flex-col">
+        <label class="text-[13px] font-semibold uppercase tracking-[0.02em] text-[var(--text-color)]">
+          Mill No
+        </label>
+
+        <select class="w-full min-h-[29px] px-2 text-[13px] rounded-lg
+        bg-[var(--input-enable-bg)]
+        border border-[var(--input-enable-border)]
+        text-[var(--select-input-value)]
+        outline-none
+        focus:border-[#888888]
+        cursor-pointer
+        transition-all duration-200" (change)="getGradeBasesPlantMills()" [(ngModel)]="payloadData.Mill">
+
+          <option value="null" disabled>Select Mill</option>
+
+          <option *ngFor="let item of millsData" [value]="item.value">
+            {{item.viewValue}}
+          </option>
+
+        </select>
+      </div>
+
+      <!-- grade native select input field -->
+      <div class="flex flex-col">
+        <label class="text-[13px] font-semibold uppercase tracking-[0.02em] text-[var(--text-color)]">
+          {{drodownTitle}}
+        </label>
+
+        <select class="w-full min-h-[29px] px-2 text-[13px] rounded-lg
+        bg-[var(--input-enable-bg)]
+        border border-[var(--input-enable-border)]
+        text-[var(--select-input-value)]
+        outline-none
+        focus:border-[#888888]
+        cursor-pointer
+        transition-all duration-200" (change)="getModelBasedOnGrade()" [(ngModel)]="payloadData.Grade">
+
+          <option value="null" disabled>Select Grade</option>
+
+          <option *ngFor="let item of gradeData" [value]="item.value">
+            {{item.viewValue}}
+          </option>
+
+        </select>
+      </div>
+
+      <!-- model from api -->
+      <div class="flex flex-col">
+        <label class="text-[13px] font-semibold uppercase tracking-[0.02em] text-[var(--text-color)]">
+          Select Model
+        </label>
+
+        <div class="flex gap-3 items-center min-h-[29px]">
+
+          <label class="flex items-center gap-1 text-[var(--text-color)] text-[13px]" *ngFor="let item of modelData">
+            <input type="radio" class="cursor-pointer" name="flexRadioDefault" [value]="item.value"
+              [(ngModel)]="payloadData.Model_No" />
+            {{item.viewValue}}
+          </label>
+
         </div>
       </div>
 
-      <div class="col-xl-3 col-lg-3 col-md-5 col-sm-12 col-12 px-2">
-        <div class="upper-tiles border-0 mb-0">
-          <div class="d-flex flex-column h-100">
-            <label class="mb-2">Date & Time</label>
-            <div class="form-group mh-38">
-              <span>{{payloadData.date}} {{payloadData.time}}</span>
-            </div>
-          </div>
+      <!-- date Time from api -->
+      <div class="flex flex-col">
+        <label class="text-[13px] font-semibold uppercase tracking-[0.02em] text-[var(--text-color)]">
+          Date & Time
+        </label>
+
+        <div class="min-h-[29px] px-2 flex items-center text-[13px] rounded-lg
+        bg-[var(--input-enable-bg)]
+        border border-[var(--input-enable-border)]
+        text-[var(--select-input-value)]">
+
+          {{payloadData.date}} {{payloadData.time}}
+
         </div>
       </div>
-      <div class="col-xl-1 col-lg-1 col-md-4 col-sm-12 col-12 px-2">
-        <button type="button" class="btn btn btnfrst submitBtn" (click)="onSubmit()">Submit</button>
+
+      <!-- Submit -->
+      <div class="flex items-end">
+        <button type="button" (click)="onSubmit()"
+          class="px-4 py-1 rounded-md border border-[var(--button-border)] 
+         bg-[var(--submit-button-bg)] hover:bg-[var(--submit-button-hover-bg)]
+          text-[#111111] font-medium transition-all duration-200 disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed active:scale-95">
+          Submit
+        </button>
       </div>
+
     </div>
+
   </div>
 
 
   <app-loader [hidden]="!flags.showLoader"></app-loader>
-  <div class="main" [hidden]="!flags.showData">
-    <div class="row mt-3 gap">
-      <div class="col-xl-3 col-lg-2 col-md-6 col-sm-12 col-12"
-        (dblclick)="getBlainePredictionChartDataForActualBlaine();openModel(predictedblaingraphtemplate)">
-        <div class="card h-100">
-          <div class="score h-75 w-100 text-center d-flex flex-column pb-2">
-            <h1 class="m-auto predicted_value">{{title=='Blaine'?datasource.Predicted_Blaine:datasource.Predicted_Blaine.toFixed(1)}}</h1>
-            <!-- <small class="m-auto date_time_stmp">{{historyDate}}</small> -->
-            <small class="m-auto date_time_stmp">{{payloadData.date}} {{payloadData.time}}</small>
-            <!-- <h1 class="m-auto predicted_value"  >400</h1> -->
-          </div>
-          <div class="detail text-center">
-            Predicted {{title}} {{unit}}
+  <div class="w-full px-2" [hidden]="!flags.showData">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-2 mt-2">
 
-          </div>
-        </div>
-      </div>
-      
-      <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 col-12">
+      <div class="cursor-pointer"
+     (dblclick)="getBlainePredictionChartDataForActualBlaine();openModel(predictedblaingraphtemplate)">
+
+  <div class="border border-[var(--input-enable-border)] rounded-xl h-full ">
+
+    <!-- Title -->
+    <div class="text-center border-b border-[var(--input-enable-border)] py-2 text-sm text-[var(--text-color)]">
+      Predicted {{title}} {{unit}}
+    </div>
+
+    <!-- Score -->
+    <div class="flex flex-col items-center justify-center text-center py-3">
+
+      <span class="text-xl text-[var(--text-color)] font-semibold predicted_value">
+        {{title=='Blaine'?datasource.Predicted_Blaine:datasource.Predicted_Blaine.toFixed(1)}}
+      </span>
+
+      <!-- Date -->
+      <small class="text-xs text-[var(--text-color)] mt-1 date_time_stmp">
+        {{payloadData.date}} {{payloadData.time}}
+      </small>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- inputs for date -->
+   <div class="flex items-end gap-8 border border-[var(--input-enable-border)] rounded-xl px-4 py-3 w-fit">
+
+  <!-- EXPORT DATA -->
+  <div>
+    <label class="text-[13px] font-semibold uppercase tracking-[0.02em] text-[var(--text-color)]">
+      Export Data
+    </label>
+
+    <div class="flex items-center gap-2 mt-1">
+
+      <app-datetimepicker
+        (dateTimeRange)="getExportDateRange($event)"
+        type="rangepicker"
+        [selectedRange]="dateRange"
+        placeholder="Select Date range">
+      </app-datetimepicker>
+
+      <button
+        (click)="export()"
+        class="flex items-center justify-center rounded-lg border border-[var(--input-enable-border)] p-1 bg-[var(--bg-color)]">
+
+        <span class="material-symbols-outlined text-[18px] text-[var(--text-color)]">
+          download
+        </span>
+
+      </button>
+
+    </div>
+  </div>
+
+
+  <!-- PREVIOUS DATA -->
+  <div>
+    <label class="text-[13px] font-semibold uppercase tracking-[0.02em] text-[var(--text-color)]">
+      Previous Data
+    </label>
+
+    <div class="flex items-center gap-2 mt-1">
+
+      <app-datetimepicker
+        (dateTime)="getHistoryDate($event)"
+        type="datepicker"
+        [selectedRange]="historyDate"
+        placeholder="Date Time">
+      </app-datetimepicker>
+
+      <button
+        (click)="getPreviousData()"
+        class="px-2 py-0.5 rounded-md border border-[var(--button-border)] text-[14px]
+        bg-[var(--submit-button-bg)] hover:bg-[var(--submit-button-hover-bg)]
+        text-[#111111] font-medium transition-all duration-200">
+
+        Submit
+
+      </button>
+
+    </div>
+  </div>
+
+</div>
+
+
+
+      <!-- <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 col-12">
         <div class="card h-100 w-100">
           <h6 class="mb-2">Is Recommendation Acknowledged? </h6>
           <div class="form-check">
@@ -125,8 +264,8 @@
 
         </div>
 
-      </div>
-      <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12 mt-lg-0 mt-md-3">
+      </div> -->
+      <!-- <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12 mt-lg-0 mt-md-3">
         <div class="card h-100 w-100">
           <h6 class="mb-2">What adjustment made to control the {{title}}</h6>
           <div class="row m-0">
@@ -138,18 +277,7 @@
                   {{item.Generic_Description}}
                 </label>
               </div>
-              <!-- <div class="form-check">
-                   <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                   <label class="form-check-label" for="defaultCheck1">
-                   Bag house fan Speed
-                   </label>
-                 </div>
-                 <div class="form-check">
-                   <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                   <label class="form-check-label" for="defaultCheck1">
-               Ball Mill Separator fan Speed
-                   </label>
-                 </div> -->
+            
             </div>
 
           </div>
@@ -162,13 +290,15 @@
           </div>
         </div>
 
-      </div>
+      </div> -->
 
 
     </div>
-    <div class="row mt-3 pb-3">
+    <div class=" mt-3 flex justify-center item-center gap-2  pb-2">
 
-      <div class="col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12 p-0">
+
+      <!-- guage container -->
+      <div class="w-2/3">
         <div>
           <ng-container #outlet>
           </ng-container>
@@ -178,7 +308,9 @@
             *ngIf="datasource && datasource.result!='No Record Found' && datasource.Tags_Data.length>0"></app-gauge>
         </ng-template>
       </div>
-      <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12">
+
+      <!-- table and form -->
+      <!-- <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12">
         <div class="card h-100">
           <h6 class="text-center font-weight-bold">Last 2 hours {{title}}</h6>
           <div class="row">
@@ -187,7 +319,7 @@
                 [(ngModel)]="userActualBlaine">
             </div>
             <div class="col-4 col-md-4 col-sm-4">
-              <!-- <input class="form-control" id="appt-time" type="time" name="appt-time" step="3600"> -->
+
               <select class="form-select" [(ngModel)]="blainHour" (click)="getCurrentHourDropDown()">
                 <option value="null" disabled>--Select Hours Here --</option>
                 <option *ngFor="let item of hoursData" [value]="item">{{item}}</option>
@@ -223,19 +355,19 @@
               <P>No Data Found</P>
             </div>
           </div>
-          <div  class="accuracyCard" *ngIf="isRole=='admin'" (dblclick)="getAccuracyLineData();openModel(accuracyFraph)">
-            
+          <div class="accuracyCard" *ngIf="isRole=='admin'" (dblclick)="getAccuracyLineData();openModel(accuracyFraph)">
+
             <div class="card h-100" *ngIf="accuracy10>0">
-              <div class="score h-75 w-100 text-center d-flex flex-column pb-2" >
+              <div class="score h-75 w-100 text-center d-flex flex-column pb-2">
                 <h1 class="m-auto accuracy_value">{{accuracy10}}%</h1>
                 <small class="m-auto date_time_stmp">±10</small>
-                <!-- <h1 class="m-auto predicted_value"  >400</h1> -->
+
               </div>
               <div class="detail text-center">
                 <h6 class="text-center font-weight-bold">MTD Blaine Accuracy percentage (%)</h6>
-    
+
               </div>
-              <!-- <app-bar-graph [data]="accuracyBarData"></app-bar-graph> -->
+
             </div>
 
             <div class="noDataBox" *ngIf="accuracy10==0">
@@ -244,12 +376,118 @@
           </div>
         </div>
 
-       
-        
+
+
+      </div> -->
+
+
+      <!-- table and inputs -->
+      <div class="w-1/3 md:w-1/3 sm:w-full  ">
+        <div
+          class="rounded-lg border border-[var(--form-border)] bg-[var(--input-enable-bg)] h-full flex flex-col shadow-sm overflow-hidden">
+
+          <!-- Card Title -->
+          <h6
+            class="text-center font-semibold py-2 px-4 text-sm bg-gradient-to-r text-[var(--text-color)] border-b border-[var(--form-border)]">
+            Last 2 hours {{ title }}
+          </h6>
+
+          <!-- Input Row -->
+          <div class="flex gap-2 px-3 py-2">
+
+            <!-- Number Input -->
+            <input type="number" class="w-1/3 min-h-[29px] px-2 text-[13px] rounded-lg
+               bg-[var(--input-enable-bg)]
+               border border-[var(--input-enable-border)]
+               text-[var(--select-input-value)]
+               outline-none
+               focus:border-[#888888]
+               transition-all duration-200
+                placeholder:text-[var(--search-placeholder)]" placeholder="Enter Actual Blaine" [min]="0"
+              [(ngModel)]="userActualBlaine" />
+
+            <!-- Select -->
+            <select class="w-1/3 min-h-[29px] px-2 text-[13px] rounded-lg
+               bg-[var(--input-enable-bg)]
+               border border-[var(--input-enable-border)]
+               text-[var(--select-input-value)]
+               outline-none
+               focus:border-[#888888]
+               cursor-pointer
+               placeholder:text-[var(--search-placeholder)]
+               transition-all duration-200" placeholder="Select hours" [(ngModel)]="blainHour"
+              (click)="getCurrentHourDropDown()">
+              <option value="null" disabled>-- Select Hours --</option>
+              <option *ngFor="let item of hoursData" [value]="item">{{ item }}</option>
+            </select>
+
+            <!-- Submit Button -->
+            <button type="button" class="w-1/3 min-h-[29px] px-2 text-[13px] rounded-md
+                bg-[var(--submit-button-bg)] text-[#111111] font-semibold
+               hover:bg-[var(--submit-button-hover-bg)] border border-[var(--button-border)]
+               disabled:opacity-50 disabled:cursor-not-allowed
+               transition-all duration-200" [disabled]="userActualBlaine == null || blainHour == null"
+              (click)="updateBlain()">
+              Submit
+            </button>
+
+          </div>
+
+          <!-- Table -->
+          <div class="overflow-y-auto flex-1  ">
+
+            <table *ngIf="tableData && tableData.length > 0" class="w-full text-sm overflow-y-auto">
+
+              <thead class="bg-gradient-to-r from-orange-400 to-orange-300 text-black">
+                <tr>
+                  <th class="text-left px-2 py-2 font-semibold border-b border-[var(--form-border)]">Time</th>
+                  <th class="text-left  px-2 py-2 font-semibold border-b border-[var(--form-border)]">Predicted {{ title
+                    }}</th>
+                  <th class="text-left  px-2 py-2 font-semibold border-b border-[var(--form-border)]">Actual {{ title }}
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let item of tableData"
+                  class="border-b text-[var(--text-color)] border-[var(--form-border)] transition hover:bg-orange-50/10">
+                  <td class=" px-2 py-2 whitespace-nowrap text-center">{{ item.Date_Time.slice(11, 16) }}</td>
+                  <td class=" px-2 py-2 whitespace-nowrap text-center">{{ item.pb }}</td>
+                  <td class=" px-2 py-2 whitespace-nowrap text-center">
+                    {{ item.Actual_Blaine ? item.Actual_Blaine : 'To be filled' }}
+                  </td>
+                </tr>
+              </tbody>
+
+            </table>
+
+            <div *ngIf="tableData && tableData.length === 0" class="flex justify-center py-6 text-gray-500 text-sm">
+              No Data Found
+            </div>
+
+          </div>
+
+          <!-- Accuracy Card (admin only) -->
+          <div *ngIf="isRole === 'admin'"
+            class="mx-2 mb-2 rounded-lg border border-[var(--form-border)] overflow-hidden cursor-pointer"
+            (dblclick)="getAccuracyLineData(); openModel(accuracyFraph)">
+
+            <div *ngIf="accuracy10 > 0" class="flex flex-col items-center py-4">
+              <h1 class="text-3xl font-bold text-orange-500">{{ accuracy10 }}%</h1>
+              <small class="text-gray-400 text-xs mt-1">±10</small>
+              <h6 class="text-center font-semibold text-sm mt-2 px-4">MTD Blaine Accuracy percentage (%)</h6>
+            </div>
+
+            <div *ngIf="accuracy10 === 0" class="flex justify-center py-4">
+              <span class="text-yellow-500 text-sm">No Data Found</span>
+            </div>
+
+          </div>
+
+        </div>
       </div>
-      
     </div>
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-6">
         <div class="card mt-3">
           <div class="row">
@@ -257,14 +495,14 @@
               <label>Export Data</label>
               <div class="form-group row d-flex">
                 <div class="col-9">
-                  <app-datetimepicker (dateTimeRange)="getExportDateRange($event)" type="rangepicker"  [selectedRange]='dateRange' placeholder="Select Date range to Export Data"></app-datetimepicker>
+                  <app-datetimepicker (dateTimeRange)="getExportDateRange($event)" type="rangepicker"
+                    [selectedRange]='dateRange' placeholder="Select Date range to Export Data"></app-datetimepicker>
                 </div>
                 <div class="col-3 offset-0">
                   <a (click)="export()" class="export"> <img [src]="imagePath.exportImg" style="width: 35px"></a>
                 </div>
-                
-                <!-- <input type="text" placeholder="Select Date range to export CSV" class="form-control" bsDaterangepicker
-                  [(bsValue)]="dateRange" [bsConfig]="{withTimepicker: true}"> -->
+
+              
               </div>
 
             </div>
@@ -278,44 +516,66 @@
               <label>Previous Data</label>
               <div class="form-group row d-flex">
                 <div class="col-9">
-                  <app-datetimepicker (dateTime)="getHistoryDate($event)" type="datepicker"  [selectedRange]='historyDate' placeholder="Select Date for History Date"></app-datetimepicker>
+                  <app-datetimepicker (dateTime)="getHistoryDate($event)" type="datepicker"
+                    [selectedRange]='historyDate' placeholder="Select Date for History Date"></app-datetimepicker>
                 </div>
-                <!-- <input type="text" placeholder="DateTimepicker" class="form-control" [(bsValue)]="historyDate"
-                  [disabled]="isDisabledDateFilter"
-                  [bsConfig]="{withTimepicker: true,  keepDatepickerOpened: true, dateInputFormat: 'MMMM Do YYYY, h:mm'}"
-                  bsDatepicker> -->
                 <div class="col-3">
                   <button type="button" class="btn btn btnfrst submitBtn" (click)="getPreviousData()">Submit</button>
                 </div>
-                
+
               </div>
 
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
   <div class="noDataBox" *ngIf="flags.showNoData">
-    <span class="text-center text-yellow">Mill in Shutdown State</span>
+    <span class="text-center text-gray-400">Mill in Shutdown State</span>
   </div>
 </div>
 
-
+<!-- modal  -->
 <ng-template #predictedblaingraphtemplate>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">Predicted vs Actual {{title}} Trend</h4>
-    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
-      <span aria-hidden="true" class="visually-hidden">&times;</span>
-    </button>
+
+  <div class="bg-[var(--card-bg)] rounded-lg w-full">
+
+    <!-- HEADER -->
+    <div class="flex items-center justify-between px-4 py-3 border-b border-[var(--input-enable-border)]">
+
+      <h4 class="text-[15px] font-semibold text-[var(--text-color)]">
+        Predicted vs Actual {{title}} Trend
+      </h4>
+
+      <button type="button" (click)="modalRef?.hide()" class="flex items-center justify-center w-7 h-7 rounded-md
+        hover:bg-[var(--table-hover)] transition">
+        <span class="material-symbols-outlined text-[18px] text-[var(--text-color)]">
+          close
+        </span>
+      </button>
+
+    </div>
+
+    <!-- BODY -->
+    <div class="p-4 space-y-4">
+
+      <div class="max-w-40">
+        <!-- DATE RANGE PICKER -->
+        <app-datetimepicker (dateTimeRange)="getDateRange($event)" type="rangepicker"
+          [selectedRange]="actualPredictedChartDateRange" placeholder="Select Date range"></app-datetimepicker>
+      </div>
+
+      <!-- CHART -->
+      <div class="w-full">
+        <app-line-chart [data]="chartDatasource" [payload]="payloadData" [daterange]="actualPredictedChartDateRange"
+          *ngIf="showChart"></app-line-chart>
+      </div>
+
+    </div>
+
   </div>
-  <div class="modal-body">
-    <app-datetimepicker (dateTimeRange)="getDateRange($event)" type="rangepicker"  [selectedRange]='actualPredictedChartDateRange' placeholder="Select Date range"></app-datetimepicker>
-    <!-- <input type="text" placeholder="Select Date range for Graph " class="form-control graphDateFilter" bsDaterangepicker
-      [(bsValue)]="actualPredictedChartDateRange" [bsConfig]="{withTimepicker: true}"
-      (bsValueChange)="onSelectDateRange($event)"> -->
-    <app-line-chart [data]="chartDatasource" [payload]="payloadData" [daterange]="actualPredictedChartDateRange" *ngIf="showChart"></app-line-chart>
-  </div>
+
 </ng-template>
 
 <ng-template #accuracyFraph>
@@ -329,7 +589,3 @@
     <app-line-chart [data]="accuracyData"></app-line-chart>
   </div>
 </ng-template>
-
-
-
-

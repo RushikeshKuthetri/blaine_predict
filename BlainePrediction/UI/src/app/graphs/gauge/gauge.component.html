@@ -1,16 +1,18 @@
-
-<div class="chartbOX">
-  <div class="row chartRow p-all-10 ml-0 mr-0" *ngIf="datasource">
-    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mb-4" *ngFor="let item of datasource.Tags_Data;let i=index">
-      <div class="card meter h-100" (dblclick)="getBarData($event,item,i);openModal(template)">
-        <div class="chart-meter" #myTestDiv>
-          <div id="{{'g'+i}}" class="m-t-10 chartDiv">
+<div class="">
+  <div class="row chartRow  " *ngIf="datasource">
+    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mb-4 rounded-lg   border border-[var(--input-enable-border)]" *ngFor="let item of datasource.Tags_Data;let i=index">
+      <div class=" shadow-[var(--card-shadow)] 
+  h-full   cursor-pointer px-0.5
+  hover:border-orange-500 hover:shadow-orange-500/40
+  transition-all duration-200" (dblclick)="getBarData($event,item,i);openModal(template)">
+        <div class=" text-[var(--text-color)]" #myTestDiv>
+          <div id="{{'g'+i}}" class="m-t-10 chartDiv  text-[var(--text-color)]">
           </div>
-          <div class="value_span d-flex">
+          <div class="value_span d-flex  text-[var(--text-color)]">
             <span>{{item.Process_Values.toFixed(2)}}</span>
           </div>
         </div>
-        <div class="detail text-center">
+        <div class="text-[var(--text-color)] text-sm text-center mt-2">
           {{item.Generic_Description}}
         </div>
       </div>
@@ -18,7 +20,7 @@
   </div>
 </div>
 
-<ng-template #template>
+<!-- <ng-template #template>
   <div class="modal-header">
     <h4 class="modal-title pull-left">History Data for {{title}}</h4>
     <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
@@ -29,4 +31,44 @@
     <app-datetimepicker (dateTimeRange)="getDateRange($event)" type="rangepicker" [selectedRange]='graphDateRange'></app-datetimepicker>
     <app-line-chart [data]="barData" [title]="title" *ngIf="showLine"></app-line-chart>
   </div>
+</ng-template> -->
+<ng-template #template>
+
+  <div class="bg-[var(--card-bg)] rounded-xl w-full">
+
+    <!-- HEADER -->
+    <div class="flex items-center justify-between px-4 py-3 border-b border-[var(--input-enable-border)]">
+
+      <h4 class="text-[15px] font-semibold text-[var(--text-color)]">
+        History Data for {{title}}
+      </h4>
+
+      <button type="button" (click)="modalRef?.hide()" class="flex items-center justify-center w-7 h-7 rounded-md
+        hover:bg-[var(--table-hover)] transition">
+        <span class="material-symbols-outlined text-[18px] text-[var(--text-color)]">
+          close
+        </span>
+      </button>
+
+    </div>
+
+    <!-- BODY -->
+    <div class="p-4 space-y-4">
+
+      <div class="max-w-40">
+        <app-datetimepicker (dateTimeRange)="getDateRange($event)" type="rangepicker"
+          [selectedRange]="graphDateRange"></app-datetimepicker>
+      </div>
+      <!-- DATE RANGE -->
+
+
+      <!-- LINE CHART -->
+      <div class="w-full">
+        <app-line-chart [data]="barData" [title]="title" *ngIf="showLine"></app-line-chart>
+      </div>
+
+    </div>
+
+  </div>
+
 </ng-template>

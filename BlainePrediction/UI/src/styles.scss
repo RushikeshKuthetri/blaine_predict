@@ -1,230 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import "~ng-pick-datetime/assets/style/picker.min.css";
-
-text{
-  font-size: 30px !important;
-  font-weight: 800;
-    // transform: rotate(-30deg) translate(0, -75) !important;
-}
+/* Importing Bootstrap SCSS file. */
 
 
-.container-fluid{
-  height: calc(100vh - 15px);
-  max-height: calc(100vh - 15px);
-  overflow: scroll;
-}
-td{
-  text-align: center;
-}
-
-body {
-    -webkit-text-size-adjust: none;
-    -webkit-font-smoothing: subpixel-antialiased;
-    font-weight: 400;
-    letter-spacing: .02em;
-    font-family: "Roboto, "Helvetica Neue", sans-serif, HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-    font-size: 14px;
-    line-height: 1.71429;
-    color: #131212;
-    background-color: #ecf0fa!important;
-     margin: 0; 
-}
-.tonav{
-    position: fixed;
-    width: 100%;
-    height:75px;
-    background: #fff500;
-    z-index: 3;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-}
-
-.tonav .navbar {
-  padding: 0.3rem 1rem;
-}
-.tonav .navbar-brand {
-  padding: 0 0;
-}
-.tonav .nav-item {
-  margin-right: 15px;
-}
-
-.btn.focus, .btn:focus {
-  outline: 0;
-  box-shadow: none;
-}
+/* Importing Datepicker SCSS file. */
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
 
 
-.top{   
-    padding-top: 78px;
-}
-label {
-  font-size: 14px;
-  font-weight: 600;
-  color: black;
-}
-.form-control:focus {
-  border-color: #fff500;
-  box-shadow: 0 0 0 0.2rem rgb(255 245 0);
-}
-.btnfrst{
-  background: #fff500;
-  background: linear-gradient(135deg, #fff500, #f7f5bc);
-  border: #fff500;
-  color: #000;
-  border-radius: 4px;
-  padding: 10px 20px;
-  box-shadow: 0 2px 5px rgb(0 0 0 / 20%);
-  transition: box-shadow 0.5s ease, transform 0.2s ease;
-  font-family: "Ubuntu", Helvetica, Arial, sans-serif;
-}
-.btnfrst:hover {
-  box-shadow: 0 5px 15px rgb(0 0 0 / 30%);
-  transition: box-shadow 0.5s ease, transform 0.2s ease;
-}
-
-.form-input {
-  display: block;
-  width: 100%;
- 
-  -moz-padding-start: calc(0.75rem - 3px);
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #212529;
-  background-color: #fff;
-  
-  border: 1px solid #ced4da;
-  border-radius: 0.375rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  -webkit-appearance: none;
-  appearance: none;
-  margin-top: 0px;
-  margin-bottom: 0pc;
-  padding: 0px;
-}
-
-
-
-
-
-
-/* width */
-::-webkit-scrollbar {
-    width: 8px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-   
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background-color: #bec3c7;
-    border-radius: 10px;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: #fff500;;
-  }
-
-    /* new dash 5 april 2023 */
-  .new_dash{
-    padding-top: 70px;
-  }
-  .bg-lblue{background-color: #ecf0fa;}
-  .new_dash .card{
-    background-color: #fff;
-    position: relative;
-    border-radius: 8px;  
-    border: 1px solid #eaedf1 !important;
-    padding: 12px;
-    box-shadow: 0 0.15rem 1.75rem 0 rgba(196, 205, 224, .2);
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    cursor: pointer;
-    
-  }
-  .new_dash .meter:hover {
-    border: 1px solid #fff500 !important;
-    box-shadow: 0px 6px 18px 4px rgba(6, 10, 48, .08);
-    -webkit-transform: scale(1.02);
-    transform: scale(1.02);
-}
-
-
-.detail{ font-weight: 600; margin-top: 10px;}
-.score{ background-color: #e2efda!important;}
-.terms {  
-    margin-bottom: 0.5rem;
-    color: #76839a;
-    font-size: 16px;
-}
-  .form-check {margin-right: 15px; }
-
- 
-
-
-  // toggle
-
-
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 40px;
-    height: 13px;
-    top: -12px;
-    z-index: 2;
-    left: -10px;
-  }
-  
-  .switch input { 
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 14px;
-    width: 14px;
-    left: 0px;
-    bottom: 0px;
-    background-color: white;
-    transition: 0.4s;
-  }
-  
-  input:checked + .slider {
-    background-color: #2196F3;
-  }
-  
-  input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-  }
-  
-  input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-  }
-  
-  /* Rounded sliders */
+ /* Rounded sliders */
   .slider.round {
     border-radius: 34px;
   }
@@ -249,6 +35,7 @@ label {
   .modal.show .modal-dialog {
     min-width: 90% !important;
     height: auto;
+  
   }
 
   .noDataBox{
@@ -267,6 +54,7 @@ label {
   }
 
   .owl-dt-popup-container .owl-dt-calendar {
+    background-color: var(--card-bg);
     height: 20.25em;
     z-index: 9999999999 !important;
   }
@@ -279,22 +67,937 @@ label {
   {
     z-index: 990 !important;
   }
-  
-
-
-
 
  
-  @media (max-width: 767px){
-    .tonav .nav-item {
-        width: max-content;
-        margin-top: 5px;
-        }
+body {
+  font-family: var(--font-inter);
+}
+
+:root {
+  --text-color: #111111;
+  --title: #AF6A1C;
+  --bg-color: #F6F5F3;
+  --bg-header: #FE8F12;
+  --accent-color: #2563eb;
+  --header-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  --leftdrawer-text:#404242;
+  --bg-leftdrawer: #F2F2F2;
+  --bg-leftdrawer-footer: #eaeaea;
+  --left-drawer-active-tab: #FD9F35;
+  --left-drawer-footer-border: rgba(203, 219, 217, 0.7);
+  --left-drawer-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1), 2px 0 6px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(0, 0, 0, 0.1);
+  --bg-main-container: #F1F0EE;
+  --card-bg: #FFF6F6;
+  --card-subtle: #776F6F;
+  --card-shadow: 0 0px 4px rgba(0, 0, 0, 0.08);
+  --mimic-line: rgba(119, 136, 134, 0.50);
+  --card-border: #FD9F35;
+  --card-shadow-onhover: 0 0px 8px rgba(0, 0, 0, 0.25);
+  --search-bg: rgba(255, 255, 255, 0.18);
+  --search-placeholder: #888888;
+  --search-border: rgba(136, 136, 136, 0.3);
+  --submit-button-bg: #FFA947;
+  --submit-button-hover-bg: #f5b367;
+  --button-bg: #FFFFFF;
+  --button-border: #FD6E41;
+  --button-hover-bg: #FFAE52;
+  --back-button-bg: #f8f6f6;
+  --picker-bg: #EAEAEA;
+  --picker-text: #111111;
+  --picker-border: #cbd5e1;
+  --picker-hover: #f1f5f9;
+  --picker-accent: #FD9F35;
+  --input-disable-bg: #EAEAEA;
+  --input-enable-bg: #FFFFFF;
+  --input-enable-border: rgba(136, 136, 136, 0.4);
+  --form-border: #CCCCCC;
+  --status-active-bg: #C8D4A6;
+  --status-active-text: #47502F;
+  --status-inactive-bg:  rgba(250, 79, 79, 0.3);
+  --status-inactive-text: #B40000;
+  --select-input:rgb(236, 236, 236);
+  --select-input-hover:rgb(243, 243, 243);
+  --select-input-value:#635b5b; 
+  --success-bg: #ecffeb;
+  --success-text: #245f06;
+  --success-border: #10b91b;
+
+  --alert-card-bg:#f3f4f6;
+
+/* chart */
+  --chart-nav-border:#D6D6D7;
+  --chart-cards-bg:#FFFFFF;
+  --chart-options-bg:#A2B3B2;
+  --tags-bottom-border:#D7C8C8;
+  --gauge-dial: #eeeeee;
+  --gauge-value: rgb(47,227,255);
+  --gauge-text: #000000;
+  --gauge-bg: #ffffff;
+
+}
+ 
+.dark {
+  --text-color: #F0F0F0;
+  --title: #ffc07a;
+  --bg-color: #1E1E1F;
+  --accent-color: #60a5fa;
+   --bg-header: #181919;
+  --header-shadow: 0 2px 6px rgba(255, 255, 255, 0.25);
+  --leftdrawer-text:#B7C5C5;
+  --bg-leftdrawer: #181919;
+  --bg-leftdrawer-footer: #2B2C2D;
+  --left-drawer-active-tab: #FD9F35;
+  --left-drawer-footer-border: #393A3C;
+  --left-drawer-shadow: 0 -2px 6px rgba(255, 255, 255, 0.12), 2px 0 6px rgba(255, 255, 255, 0.12), 0 2px 6px rgba(255, 255, 255, 0.12);
+  --bg-main-container: #181919;
+  --card-bg: #2F3232;
+  --card-subtle: #B4A3A3;
+  --mimic-line: rgba(119, 136, 134, 0.50);
+  --search-bg: rgba(47, 43, 43, 0.25);
+  --search-placeholder: #888888;
+  --search-border: rgba(255, 255, 255, 0.18);
+  --select-input:rgb(63, 61, 61);
+  --select-input-hover:rgb(52, 51, 51);
+  --select-input-value:#d5d5d5;
+  --picker-bg: #1f2937;
+  --picker-text: #f3f4f6;
+  --picker-border: #374151;
+  --picker-hover: #2b3646;
+  --picker-accent: #FD9F35;
+  --input-disable-bg: #1F2021;
+  --input-enable-bg: #2B2C2D;
+  --input-enable-border: #393A3C;
+  --form-border: #353838;
+  --button-border: #393A3C;
+  --button-bg: #282829;
+  --button-hover-bg: #424345;
+  --success-bg: #282a29;
+  --success-text: #67ecc7;
+  --success-border: #4b4f4d;
+
+  --alert-card-bg: #252525;
+/* chart */
+  --chart-nav-border:#393535;
+  --chart-cards-bg:#222020;
+  --chart-options-bg:#535858;
+  --tags-bottom-border:#535353;
+   --gauge-dial: #3a3a3a;
+  --gauge-value: #4dd0ff;
+  --gauge-text: #ffffff;
+  --gauge-bg: #1f1f1f;
+}
+ 
+.title-font {
+  font-family: var(--font-poppins);
+}
+
+/* SCROLLBAR STYLE */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;   /* 👈 vertical scrollbar thickness */
+  height: 4px;  /* horizontal scrollbar thickness */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: var(--bg-main-container);      /* light gray track */
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #a1a1a1;      /* orange thumb */
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;      /* darker orange on hover */
+}
+
+/* ===== FIX REACT DATEPICKER BROKEN LAYOUT ===== */
+
+/* Fix wrapper width */
+.react-datepicker-wrapper {
+  width: 100%;
+  display: block;
+}
+
+.react-datepicker__input-container {
+  width: 100%;
+  display: block;
+}
+
+/* Fix input width */
+.react-datepicker__input-container input {
+  width: 100%;
+}
+
+/* Fix popper positioning */
+.react-datepicker-popper {
+  z-index: 9999 !important;
+  position: absolute !important;
+  inset: auto auto auto 0 !important;
+  /* transform: translate3d(0, 40px, 0) !important;  REMOVED */
+}
+/* Main calendar container */
+.react-datepicker {
+  font-family: inherit !important;
+  background-color: var(--input-enable-bg) !important;
+  border: 1px solid var(--form-border) !important;
+  border-radius: 8px !important;
+  color: var(--text-color) !important;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  display: flex !important;
+  margin-top: 2px;
+}
+
+/* Header styling */
+.react-datepicker__header {
+  background-color: var(--picker-bg) !important;
+  border-bottom: 1px solid var(--form-border) !important;
+  border-top-left-radius: 8px;
+}
+
+.react-datepicker__current-month {
+  color: var(--text-color) !important;
+  font-weight: 600;
+  font-size: 0.9rem;
+   padding: 6px 0;
+}
+
+
+.react-datepicker__day-name,
+.react-datepicker__day {
+   color: var(--text-color) !important;
+  width: 1.8rem; /* Smaller width */
+  line-height: 1.8rem; /* Smaller height */
+  margin: 0.1rem; /* Smaller margin between cells */
+}
+
+/* Days */
+.react-datepicker__day {
+  color: var(--text-color) !important;
+  width: 2rem;
+  line-height: 2rem;
+  margin: 0.2rem;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+}
+
+.react-datepicker__day:hover {
+  background-color: var(--picker-hover) !important;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background-color: var(--picker-accent) !important;
+  color: white !important;
+  font-weight: 600;
+}
+
+.react-datepicker__day--today {
+  border: 1px solid var(--picker-accent);
+  font-weight: 600;
+}
+
+/* ===== TIME CONTAINER - FIXED HEIGHT ===== */
+.react-datepicker__time-container {
+  width: 100px !important;
+  border-left: 1px solid var(--form-border) !important;
+  background-color: var(--input-enable-bg) !important;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.react-datepicker__time-container .react-datepicker__time {
+  background-color: var(--input-enable-bg) !important;
+  height: 100% !important;
+}
+
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box {
+  width: 100px !important;
+}
+
+/* ===== TIME LIST - FIXED HEIGHT WITH SCROLL ===== */
+.react-datepicker__time-list {
+  padding: 0 !important;
+  height: 150px !important; /* Fixed height - shows about 7 items */
+  overflow-y: auto !important;
+  scrollbar-width: thin;
+  scrollbar-color: var(--picker-accent) var(--form-border);
+}
+
+/* Webkit scrollbar styling (Chrome, Safari, Edge) */
+.react-datepicker__time-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.react-datepicker__time-list::-webkit-scrollbar-track {
+  background: var(--form-border);
+  border-radius: 4px;
+}
+
+.react-datepicker__time-list::-webkit-scrollbar-thumb {
+  background: var(--picker-accent);
+  border-radius: 4px;
+}
+
+.react-datepicker__time-list::-webkit-scrollbar-thumb:hover {
+  background: #e5891f;
+}
+
+/* Time items */
+.react-datepicker__time-list-item {
+  color: var(--text-color) !important;
+  padding: 6px 10px !important;
+  height: 30px !important; /* Fixed height for each time item */
+  line-height: 18px !important;
+  transition: 0.15s ease;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.react-datepicker__time-list-item:hover {
+  background-color: var(--picker-hover) !important;
+}
+
+.react-datepicker__time-list-item--selected {
+  background-color: var(--picker-accent) !important;
+  color: white !important;
+  font-weight: 500;
+}
+
+/* Time header */
+.react-datepicker__time-container .react-datepicker__header {
+  border-top-right-radius: 8px;
+  border-bottom: 1px solid var(--form-border) !important;
+  height: 50px; /* Fixed header height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.react-datepicker-time__header {
+  color: var(--text-color) !important;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Navigation arrows */
+.react-datepicker__navigation-icon::before {
+  border-color: var(--text-color) !important;
+}
+
+.react-datepicker__navigation:hover *::before {
+  border-color: var(--picker-accent) !important;
+}
+
+/* Month container */
+.react-datepicker__month-container {
+  background-color: var(--input-enable-bg) !important;
+}
+
+/* Week rows */
+.react-datepicker__week {
+  display: flex;
+  justify-content: center;
+}
+
+/* Remove triangle */
+.react-datepicker__triangle {
+  display: none;
+}
+
+/* Popper positioning */
+.react-datepicker-popper[data-placement^="bottom"] {
+  padding-top: 1px;
+}
+
+
+/* ---------- NAVIGATION ARROWS ---------- */
+
+.react-datepicker__navigation-icon::before {
+  border-color: var(--text-color) !important;
+}
+
+/* ---------- RANGE / ACTIVE STATES ---------- */
+
+.react-datepicker__day--in-range {
+  background-color: #FD9F3520 !important;
+  color: var(--text-color) !important;
+}
+
+/* ---------- TEXT SELECTION ---------- */
+
+::selection {
+  background: var(--picker-accent);
+  color: white;
+}
+
+/* ===== REACT SELECT GLOBAL THEME ===== */
+
+.react-select-container {
+  width: 100%;
+  font-size: 13px;
+}
+
+/* MAIN CONTROL */
+.react-select__control {
+  background-color: var(--input-enable-bg) !important;
+  border: 1px solid var(--input-enable-border) !important;
+  border-radius: 8px !important;
+  min-height: 34px !important;
+  box-shadow: none !important;
+  transition: all 0.2s ease;
+}
+
+.react-select__control:hover {
+  border-color: var(--input-enable-border) !important;
+}
+
+.react-select__control--is-focused {
+  border-color: #888888 !important;
+  box-shadow: 0 0 0 1px #88888820 !important;
+}
+
+/* VALUE CONTAINER */
+.react-select__value-container {
+  padding: 2px 8px !important;
+}
+
+/* INPUT + VALUE */
+.react-select__single-value,
+.react-select__input-container {
+  color: var(--select-input-value) !important;
+}
+
+/* PLACEHOLDER */
+.react-select__placeholder {
+  color: #9ca3af !important;
+}
+
+/* MULTI SELECT TAG */
+.react-select__multi-value {
+  background-color: var(--input-enable-border) !important;
+  border-radius: 6px !important;
+}
+
+.react-select__multi-value__label {
+  color: var(--select-input-value) !important;
+  font-size: 12px;
+}
+
+.react-select__multi-value__remove:hover {
+  background-color: #ff4d4f20 !important;
+  color: #ff4d4f !important;
+}
+
+/* DROPDOWN */
+.react-select__menu {
+  background-color: var(--input-enable-bg) !important;
+  border: 1px solid var(--input-enable-border);
+  border-radius: 8px !important;
+  overflow: hidden;
+  z-index: 50;
+}
+
+/* OPTIONS */
+.react-select__option {
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--select-input-value);
+}
+
+.react-select__option--is-focused {
+  background-color: #FD9F3515 !important;
+}
+
+.react-select__option--is-selected {
+  background-color: #FD9F35 !important;
+  color: white !important;
+}
+
+/* INDICATORS */
+.react-select__indicator-separator {
+  display: none;
+}
+
+.react-select__dropdown-indicator,
+.react-select__clear-indicator {
+  padding: 4px !important;
+  color: #888;
+}
+
+.react-select__dropdown-indicator:hover {
+  color: #444;
+}
+
+
+/* ============================== Css for HighChart===================== */
+
+/* ===== HIGHCHARTS THEME ===== */
+
+/* Chart container */
+.highcharts-container {
+  font-family: var(--font-inter), Inter, sans-serif !important;
+  position: relative;
+  overflow: visible !important;
+}
+
+/* Chart background */
+.highcharts-background {
+  fill: transparent !important;
+}
+
+/* Title */
+.highcharts-title {
+  fill: var(--title) !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  font-family: var(--font-poppins), Poppins, sans-serif !important;
+}
+
+/* Subtitle */
+.highcharts-subtitle {
+  fill: var(--leftdrawer-text) !important;
+  font-size: 13px !important;
+}
+
+/* Axis labels */
+.highcharts-axis-labels text {
+  fill: var(--text-color) !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+}
+
+/* Axis lines and ticks */
+.highcharts-axis-line,
+.highcharts-tick {
+  stroke: var(--chart-nav-border) !important;
+  stroke-width: 1 !important;
+}
+
+/* Grid lines */
+.highcharts-grid-line {
+  stroke: var(--mimic-line) !important;
+  stroke-width: 0.5 !important;
+  stroke-dasharray: none !important;
+}
+
+/* Minor grid lines */
+.highcharts-minor-grid-line {
+  stroke: var(--mimic-line) !important;
+  stroke-width: 0.3 !important;
+  stroke-opacity: 0.5 !important;
+}
+
+/* Legend */
+.highcharts-legend-item text {
+  fill: var(--text-color) !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  cursor: pointer !important;
+}
+
+.highcharts-legend-item:hover text {
+  fill: var(--title) !important;
+}
+
+.highcharts-legend-item-hidden text {
+  fill: var(--tags-bottom-border) !important;
+  opacity: 0.5 !important;
+}
+
+.highcharts-legend-box {
+  fill: var(--chart-cards-bg) !important;
+  stroke: var(--chart-nav-border) !important;
+  stroke-width: 1 !important;
+  fill-opacity: 0.8 !important;
+}
+
+/* Tooltip */
+.highcharts-tooltip-box {
+  fill: var(--card-bg) !important;
+  stroke: var(--form-border) !important;
+  stroke-width: 1 !important;
+  fill-opacity: 0.95 !important;
+  box-shadow: var(--card-shadow) !important;
+}
+
+.highcharts-tooltip text {
+  fill: var(--text-color) !important;
+  font-size: 12px !important;
+}
+
+.highcharts-tooltip-header {
+  font-size: 12px !important;
+  font-weight: 600 !important;
+}
+
+/* Data labels */
+.highcharts-data-label text {
+  fill: var(--text-color) !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  text-shadow: none !important;
+}
+
+/* Plot lines and bands */
+.highcharts-plot-line {
+  stroke: var(--title) !important;
+  stroke-width: 1 !important;
+}
+
+.highcharts-plot-band {
+  fill: var(--title) !important;
+  fill-opacity: 0.1 !important;
+}
+
+/* Series colors */
+.highcharts-color-0 {
+  fill: #FD9F35 !important;
+  stroke: #FD9F35 !important;
+}
+
+.highcharts-color-1 {
+  fill: #FFAE52 !important;
+  stroke: #FFAE52 !important;
+}
+
+.highcharts-color-2 {
+  fill: #FFC07A !important;
+  stroke: #FFC07A !important;
+}
+
+.highcharts-color-3 {
+  fill: #B4A3A3 !important;
+  stroke: #B4A3A3 !important;
+}
+
+.highcharts-color-4 {
+  fill: #635b5b !important;
+  stroke: #635b5b !important;
+}
+
+.highcharts-color-5 {
+  fill: #404242 !important;
+  stroke: #404242 !important;
+}
+
+/* Bar/Column charts */
+.highcharts-point {
+  stroke-width: 0 !important;
+  border-radius: 4px !important;
+}
+
+.highcharts-column-series .highcharts-point {
+  stroke: var(--chart-cards-bg) !important;
+  stroke-width: 1 !important;
+}
+
+/* Line charts */
+.highcharts-graph {
+  stroke-width: 2 !important;
+}
+
+.highcharts-series line {
+  stroke-width: 2 !important;
+}
+
+/* Markers */
+.highcharts-point {
+  fill: var(--chart-cards-bg) !important;
+  stroke: #FD9F35 !important;
+  stroke-width: 2 !important;
+}
+
+.highcharts-markers .highcharts-point {
+  fill: var(--chart-cards-bg) !important;
+  stroke: #FD9F35 !important;
+  stroke-width: 2 !important;
+}
+
+/* Area charts */
+.highcharts-area {
+  fill-opacity: 0.1 !important;
+}
+
+/* Pie charts */
+.highcharts-pie-series .highcharts-point {
+  stroke: var(--chart-cards-bg) !important;
+  stroke-width: 2 !important;
+}
+
+.highcharts-pie-series .highcharts-data-label text {
+  fill: var(--text-color) !important;
+}
+
+/* Loading state */
+.highcharts-loading {
+  background-color: var(--bg-main-container) !important;
+  opacity: 0.7 !important;
+}
+
+.highcharts-loading-inner {
+  color: var(--text-color) !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+}
+
+/* No data message */
+.highcharts-no-data text {
+  fill: var(--leftdrawer-text) !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+}
+
+/* Navigation buttons (if any) */
+.highcharts-button {
+  fill: var(--input-enable-bg) !important;
+  stroke: var(--input-enable-border) !important;
+  stroke-width: 1 !important;
+  cursor: pointer !important;
+}
+
+.highcharts-button text {
+  fill: var(--text-color) !important;
+  font-size: 11px !important;
+}
+
+.highcharts-button-hover {
+  fill: var(--picker-hover) !important;
+  stroke: var(--title) !important;
+}
+
+.highcharts-button-pressed {
+  fill: #FD9F35 !important;
+}
+
+.highcharts-button-pressed text {
+  fill: #FFFFFF !important;
+}
+
+/* Range selector (for stock charts) */
+.highcharts-range-selector-buttons .highcharts-button {
+  fill: var(--input-enable-bg) !important;
+}
+
+.highcharts-range-selector-buttons .highcharts-button text {
+  fill: var(--text-color) !important;
+}
+
+/* Scrollbar */
+.highcharts-scrollbar {
+  fill: var(--input-enable-bg) !important;
+  stroke: var(--input-enable-border) !important;
+  stroke-width: 1 !important;
+}
+
+.highcharts-scrollbar-thumb {
+  fill: #FD9F35 !important;
+  stroke: #FD9F35 !important;
+  stroke-width: 1 !important;
+}
+
+.highcharts-scrollbar-button {
+  fill: var(--input-enable-bg) !important;
+  stroke: var(--input-enable-border) !important;
+  stroke-width: 1 !important;
+}
+
+/* Credits (hidden by default but just in case) */
+.highcharts-credits {
+  display: none !important;
+}
+
+/* Export menu */
+.highcharts-contextmenu {
+  background-color: var(--card-bg) !important;
+  border: 1px solid var(--form-border) !important;
+  border-radius: 8px !important;
+  box-shadow: var(--card-shadow) !important;
+}
+
+.highcharts-contextmenu li {
+  color: var(--text-color) !important;
+  font-size: 12px !important;
+  padding: 8px 12px !important;
+  cursor: pointer !important;
+}
+
+.highcharts-contextmenu li:hover {
+  background-color: #FD9F3515 !important;
+  color: var(--title) !important;
+}
+
+/* Dark mode specific overrides */
+.dark .highcharts-point {
+  fill: var(--card-bg) !important;
+}
+
+.dark .highcharts-markers .highcharts-point {
+  fill: var(--card-bg) !important;
+}
+
+.dark .highcharts-tooltip-box {
+  fill: var(--card-bg) !important;
+  stroke: var(--form-border) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .highcharts-title {
+    font-size: 14px !important;
   }
+  
+  .highcharts-axis-labels text {
+    font-size: 10px !important;
+  }
+  
+  .highcharts-legend-item text {
+    font-size: 11px !important;
+  }
+}
+
+/* Animation for loading spinner (if you want to customize) */
+@keyframes highcharts-loading-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.highcharts-loading-inner::after {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--form-border);
+  border-top-color: #FD9F35;
+  border-radius: 50%;
+  animation: highcharts-loading-spin 0.8s linear infinite;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+/* Modal theme + width */
+// .modal-content {
+//   background-color: var(--card-bg) !important;
+//   color: var(--text-color) !important;
+//   border: 1px solid var(--form-border) !important;
+// }
+
+// .modal-header,
+// .modal-body,
+// .modal-footer {
+//   background-color: var(--card-bg) !important;
+//   color: var(--text-color) !important;
+//   border-color: var(--form-border) !important;
+// }
+
+/* Fix for extra spacing caused by Angular CDK announcer/descriptor */
+.cdk-live-announcer-element,
+.cdk-describedby-message-container {
+  position: absolute !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Fix for Material overlay (dropdown menus, select panels) causing layout shift */
+.cdk-overlay-container {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 1000 !important;
+}
+
+.cdk-overlay-pane {
+  pointer-events: auto !important;
+  position: fixed !important;
+}
+
+.cdk-overlay-connected-position-bounding-box {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  pointer-events: none;
+}
+
+.cdk-overlay-backdrop {
+  position: fixed !important;
+  pointer-events: none;
+}
+
+.cdk-overlay-backdrop-showing {
+  pointer-events: auto !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+
+/* Ensure Material select panel has proper background */
+
+// css for the select menu from the bootstrap 
+
+.custom-select-field .mat-mdc-text-field-wrapper {
+  background: var(--input-enable-bg);
+  border-radius: 8px;
+  min-height: 29px;
+}
+
+/* Border styling */
+.custom-select-field .mdc-notched-outline__leading,
+.custom-select-field .mdc-notched-outline__notch,
+.custom-select-field .mdc-notched-outline__trailing {
+  border-color: var(--input-enable-border) !important;
+}
+
+/* Focus border */
+.custom-select-field.mat-focused .mdc-notched-outline__leading,
+.custom-select-field.mat-focused .mdc-notched-outline__notch,
+.custom-select-field.mat-focused .mdc-notched-outline__trailing {
+  border-color: var(--input-enable-border);
+}
+
+/* Value text */
+.custom-select-field .mat-mdc-select-value {
+  color: var(--select-input-value);
+  font-size: 13px;
+}
+
+/* Dropdown arrow */
+.custom-select-field .mat-mdc-select-arrow {
+  color: var(--search-placeholder);
+}
+
+/* Dropdown panel */
+.mat-mdc-select-panel {
+  background: var(--input-enable-bg) !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--input-enable-border);
+}
+
+/* Options */
+.mat-mdc-option {
+  font-size: 13px;
+  color: var(--select-input-value);
+}
+
+/* Hover option */
+.mat-mdc-option:hover:not(.mdc-list-item--disabled) {
+  background: var(--select-input-hover) ;
+}
+
+/* Selected option */
+.mat-mdc-option.mdc-list-item--selected {
+  background: var(--select-input) ;
+}
+.mat-mdc-select-panel {
+  background-color: var(--card-bg) ;
+  color: var(--text-color) ;
+}
 
 
-/* Importing Bootstrap SCSS file. */
-@import "./node_modules/bootstrap/scss/bootstrap";
 
-/* Importing Datepicker SCSS file. */
-@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+
+
+

@@ -8,6 +8,8 @@ import { BarGraphComponent } from './graphs/bar-graph/bar-graph.component';
 import { MsalGuard } from '@azure/msal-angular';
 import { LineChartComponent } from './graphs/line-chart/line-chart.component';
 import { DatetimepickerComponent } from './common/datetimepicker/datetimepicker.component';
+import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
+
 const routes: Routes = [
   {
     path:'',
@@ -26,8 +28,14 @@ const routes: Routes = [
 
   {
     path:'home',
-    component:HomeComponent,
-    canActivate: [MsalGuard]
+    component: MainLayoutComponent,
+    canActivate: [MsalGuard],
+    children: [
+      {
+        path: '',
+        component: HomeComponent
+      }
+    ]
   }
 ];
 

@@ -35,7 +35,7 @@
               "node_modules/ngx-datetime-picker/ngx-datetime-picker.css",
               "src/styles.scss"
             ],
-            "scripts": []   
+            "scripts": []  
           },
           "configurations": {
             "production": {
@@ -60,7 +60,7 @@
               "optimization": true,
               "outputHashing": "all"
             },
-            "dev": {
+            "development": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -118,3 +118,5 @@
     "analytics": "eae27ce8-05e5-474d-ac52-994a248d31cd"
   }
 }
+ 
+ 
