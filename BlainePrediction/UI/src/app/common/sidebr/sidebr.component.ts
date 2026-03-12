@@ -17,53 +17,61 @@ export interface MenuItem {
 }
 
 export const MENU_ITEMS: MenuItem[] = [
- { name: 'Mimics', icon: 'settings', path: '/mimics', openInNewTab: false},
-  { name: 'Data Download', icon: 'download', path: '/datadownload' , openInNewTab: false},
-  { name: 'Trends', icon: 'trend', path: "mimics/viewtrends" ,openInNewTab: false},
-  { name: 'Report', icon: 'report', path: "https://dev.d24ohd8z0zwg7d.amplifyapp.com/reports" ,
-         openInNewTab: true
-},
- { name: 'Tag Utility', icon: 'link', path: "https://tag_utility.akxatechapps.com/",
-        openInNewTab: true
- },
+  { name: 'Mimics', icon: 'settings', path: '/mimics', openInNewTab: false },
+  { name: 'Data Download', icon: 'download', path: '/datadownload', openInNewTab: false },
+  { name: 'Trends', icon: 'trend', path: "https://dev.d24ohd8z0zwg7d.amplifyapp.com/mimics/viewtrends", openInNewTab: false },
   {
-    name: 'CBM', icon: 'wrench', path: '', hasDropdown: true,  openInNewTab: false,
+    name: 'Report', icon: 'report', path: "/reports/reportList",
+    openInNewTab: true
+  },
+  {
+    name: 'Tag Utility', icon: 'link', path: "https://tag_utility.akxatechapps.com/",
+    openInNewTab: true
+  },
+  {
+    name: 'CBM', icon: 'wrench', path: '', hasDropdown: true, openInNewTab: false,
 
     children: [
-      { name: 'Equipment Template', icon: '', path: '/cbm/templates' , openInNewTab: false,},
-      { name: 'Email Template', icon: '', path: '/cbm/EmailTemplateList' , openInNewTab: false,},
+      { name: 'Equipment Template', icon: '', path: '/cbm/templates', openInNewTab: false, },
+      { name: 'Email Template', icon: '', path: '/cbm/EmailTemplateList', openInNewTab: false, },
       { name: 'Cyclone View List', icon: '', path: '/cbm/cyclonelist', openInNewTab: false, },
     ],
   },
-  { name: 'Charts Visualization', icon: 'chart', path: '/dashboard/chartvisualization', openInNewTab: false, },
+  { name: 'Charts Visualization', icon: 'chart', path: "/mimics/chartspage", openInNewTab: false, },
   {
     name: 'Process Optimization', icon: 'cogs', path: '', hasDropdown: true,
     children: [
-      { name: 'Blaine Prediction', icon: '', path: '/home',openInNewTab: false,  },
-     {
+      { name: 'Blaine Prediction', icon: '', path: "/blaine/#/home", openInNewTab: false, },
+      {
         name: 'Cement OPT', icon: '', path: '', hasDropdown: true, openInNewTab: false,
         children: [
-          { name: 'Dashboard', icon: '', path: '', openInNewTab: false, },
-          { name: 'Recommendation', icon: '', path: '', openInNewTab: false, },
-          { name: 'Admin', icon: '', path: '' , openInNewTab: false,},
+          {
+            name: "Home", icon: '',
+            path: "/cement/#/home",
+            moduleKey: "OPT",
+            openInNewTab: false,
+          },
+          { name: 'Dashboard', icon: '', path: "/cement/#/dashboard", openInNewTab: false, },
+          { name: 'Recommendation', icon: '', path: "/cement/#/recommendationsList", openInNewTab: false, },
+          { name: 'Admin', icon: '', path: "/cement/#/adminpage", openInNewTab: false, },
         ],
       },
       {
         name: 'Kiln OPT', icon: '', path: '', hasDropdown: true, openInNewTab: false,
         children: [
-          { name: 'Performance Dashboard', icon: '', path: '/dashboard', openInNewTab: false, },
-          { name: 'Process Dashboard', icon: '', path: '/home', openInNewTab: false, },
-          { name: 'Recommendations', icon: '', path: '/recommendationsList', openInNewTab: false, },
-          { name: 'Alerts', icon: '', path: '/alertList', openInNewTab: false, },
-          { name: 'Equipment', icon: '', path: '/equipmentList', openInNewTab: false, },
-          { name: 'Tag List', icon: '', path: '/disturbanceOrder', openInNewTab: false, },
-          { name: 'Admin Page', icon: '', path: '/adminpage' , openInNewTab: false,},
-          { name: 'Control Range Page', icon: '', path: '/controlRange' , openInNewTab: false,},
+          { name: 'Performance Dashboard', icon: '', path: '/klin/#/dashboard', openInNewTab: false, },
+          { name: 'Process Dashboard', icon: '', path: '/klin/#/home', openInNewTab: false, },
+          { name: 'Recommendations', icon: '', path: '/klin/#/recommendationsList', openInNewTab: false, },
+          { name: 'Alerts', icon: '', path: '/klin/#/alertList', openInNewTab: false, },
+          { name: 'Equipment', icon: '', path: '/klin/#/equipmentList', openInNewTab: false, },
+          { name: 'Tag List', icon: '', path: '/klin/#/disturbanceOrder', openInNewTab: false, },
+          { name: 'Admin Page', icon: '', path: '/klin/#/adminpage', openInNewTab: false, },
+          { name: 'Control Range Page', icon: '', path: '/klin/#/controlRange', openInNewTab: false, },
         ],
       },
     ],
   },
-   {
+  {
     name: 'Admin', icon: 'admin', path: '/dashboard/admin', hasDropdown: true, openInNewTab: false,
     children: [
       { name: 'User List', icon: '', path: '/admin/dashboard/datatable', roles: ["admin", "super_admin"] },
@@ -139,103 +147,103 @@ export class SidebrComponent implements OnInit {
   //   // ThemeService.init() in AppComponent handles theme restoration
   // }
 
-   ngOnInit(): void {
-  this.mounted = true;
-  this.currentPath = this.router.url;
+  ngOnInit(): void {
+    this.mounted = true;
+    this.currentPath = this.router.url;
 
-  // modules from localStorage
-  const modules = localStorage.getItem('modules');
-  this.modules = modules ? JSON.parse(modules) : [];
+    // modules from localStorage
+    const modules = localStorage.getItem('modules');
+    this.modules = modules ? JSON.parse(modules) : [];
 
-  // role from token/localStorage
-  const token = localStorage.getItem('token');
-  if (token) {
-    const parsed = JSON.parse(token);
-    this.role = parsed?.Role || '';
+    // role from token/localStorage
+    const token = localStorage.getItem('token');
+    if (token) {
+      const parsed = JSON.parse(token);
+      this.role = parsed?.Role || '';
+    }
+
+    this.applyMenuFiltering();
   }
 
-  this.applyMenuFiltering();
-}
+  applyMenuFiltering(): void {
 
-applyMenuFiltering(): void {
+    this.filteredMenu = this.menuItems
+      .filter((item) => {
 
-  this.filteredMenu = this.menuItems
-    .filter((item) => {
+        if (item.moduleKey === 'Admin') return true;
 
-      if (item.moduleKey === 'Admin') return true;
+        if (item.moduleKey && !this.modules.includes(item.moduleKey)) {
+          return false;
+        }
 
-      if (item.moduleKey && !this.modules.includes(item.moduleKey)) {
-        return false;
-      }
+        return true;
+      })
+      .map((item) => {
 
-      return true;
-    })
-    .map((item) => {
+        if (!item.children) return item;
 
-      if (!item.children) return item;
+        let filteredChildren = item.children;
 
-      let filteredChildren = item.children;
+        if (item.moduleKey === 'Admin') {
 
-      if (item.moduleKey === 'Admin') {
+          // role filtering
+          filteredChildren = item.children.filter(
+            child => !child.roles || child.roles.includes(this.role)
+          );
 
-        // role filtering
-        filteredChildren = item.children.filter(
-          child => !child.roles || child.roles.includes(this.role)
-        );
+        } else {
 
-      } else {
+          // module filtering
+          filteredChildren = item.children.filter(
+            child => !child.moduleKey || this.modules.includes(child.moduleKey)
+          );
 
-        // module filtering
-        filteredChildren = item.children.filter(
-          child => !child.moduleKey || this.modules.includes(child.moduleKey)
-        );
+        }
 
-      }
+        return { ...item, children: filteredChildren };
 
-      return { ...item, children: filteredChildren };
+      })
+      .filter((item) => {
 
-    })
-    .filter((item) => {
+        if (item.children && item.children.length === 0) {
+          return false;
+        }
 
-      if (item.children && item.children.length === 0) {
-        return false;
-      }
+        return true;
+      });
+  }
 
-      return true;
-    });
-}
+  handleNavigation(item: MenuItem): void {
 
-handleNavigation(item: MenuItem): void {
+    if (!item.path) return;
 
-  if (!item.path) return;
+    const fullUrl = item.path.startsWith('http')
+      ? item.path
+      : `${window.location.origin}${item.path}`;
 
-  const fullUrl = item.path.startsWith('http')
-    ? item.path
-    : `${window.location.origin}${item.path}`;
+    if (item.openInNewTab) {
 
-  if (item.openInNewTab) {
-
-    // open in new tab
-    window.open(fullUrl, '_blank', 'noopener,noreferrer');
-
-  } else {
-
-    if (item.path.startsWith('http')) {
-
-      // external link same tab
-      window.location.href = fullUrl;
+      // open in new tab
+      window.open(fullUrl, '_blank', 'noopener,noreferrer');
 
     } else {
 
-      // angular internal route
-      this.router.navigateByUrl(item.path);
+      if (item.path.startsWith('http')) {
+
+        // external link same tab
+        window.location.href = fullUrl;
+
+      } else {
+
+        // angular internal route
+        this.router.navigateByUrl(item.path);
+
+      }
 
     }
 
+    this.closeMobile();
   }
-
-  this.closeMobile();
-}
 
 
   isActiveRoute(path: string): boolean {
