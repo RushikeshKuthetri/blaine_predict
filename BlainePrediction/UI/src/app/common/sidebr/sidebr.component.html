@@ -43,7 +43,7 @@
     <!-- ── MENU LIST ────────────────────────────────────────── -->
     <div class="flex-1 overflow-y-auto custom-scrollbar flex flex-col px-3 gap-1 mt-2">
 
-      <ng-container *ngFor="let item of menuItems; let i = index">
+    <ng-container *ngFor="let item of filteredMenu; let i = index">
         <div>
 
           <!-- ── PARENT MENU ITEM ──────────────────────────── -->
@@ -76,13 +76,11 @@
 
             <!-- Non-dropdown: router link -->
             <ng-template #linkItem>
-              <a [routerLink]="item.path || null" 
-              class="flex items-center w-full" 
-              [class.gap-4]="!collapsed"
-                [class.justify-center]="collapsed" (click)="closeMobile()">
+              <div class="flex items-center w-full cursor-pointer" [class.gap-4]="!collapsed"
+                [class.justify-center]="collapsed" (click)="handleNavigation(item)">
                 <ng-container *ngTemplateOutlet="iconTpl; context: { $implicit: item.icon }"></ng-container>
                 <span *ngIf="!collapsed" class="text-sm font-medium">{{ item.name }}</span>
-              </a>
+            </div>
             </ng-template>
 
           </div>
@@ -148,14 +146,14 @@
 
                   <!-- Plain child link -->
                   <ng-template #childLink>
-                    <a [routerLink]="child.path || null" class="flex-1 min-w-0" (click)="closeMobile()">
+                   <div class="flex-1 min-w-0 cursor-pointer" (click)="handleNavigation(child)">
                       <div class="py-[6.4px] px-2 rounded-lg transition-all text-sm truncate" [ngClass]="{
                           'bg-[var(--left-drawer-active-tab)] text-[#111111] font-semibold': currentPath === child.path,
                           'text-[var(--leftdrawer-text)] hover:bg-[var(--left-drawer-active-tab)] hover:text-[#111111]': currentPath !== child.path
                         }">
                         {{ child.name }}
                       </div>
-                    </a>
+                   </div>
                   </ng-template>
 
                 </div>
@@ -166,7 +164,8 @@
                   [style.margin-left.px]="SVG_WIDTH">
                   <ng-container *ngFor="let grandchild of child.children; let gi = index">
                     <div class="relative flex flex-col">
-                      <a [routerLink]="grandchild.path || null" class="flex items-center" (click)="closeMobile()">
+                       <div class="flex items-center cursor-pointer"
+     (click)="handleNavigation(grandchild)">
                         <!-- Connector SVG (level-2) -->
                         <svg [attr.width]="SVG_WIDTH" [attr.height]="SVG_HEIGHT"
                           [attr.viewBox]="'0 0 ' + SVG_WIDTH + ' ' + SVG_HEIGHT" class="shrink-0" fill="none">
@@ -190,7 +189,7 @@
                           }">
                           {{ grandchild.name }}
                         </div>
-                      </a>
+                      </div>
                     </div>
                   </ng-container>
                 </div>
