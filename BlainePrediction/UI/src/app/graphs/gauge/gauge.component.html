@@ -1,22 +1,29 @@
 <div class="">
-  <div class="row chartRow  " *ngIf="datasource">
-    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mb-4 rounded-lg   border border-[var(--input-enable-border)]" *ngFor="let item of datasource.Tags_Data;let i=index">
-      <div class=" shadow-[var(--card-shadow)] 
-  h-full   cursor-pointer px-0.5
-  hover:border-orange-500 hover:shadow-orange-500/40
-  transition-all duration-200" (dblclick)="getBarData($event,item,i);openModal(template)">
-        <div class=" text-[var(--text-color)]" #myTestDiv>
-          <div id="{{'g'+i}}" class="m-t-10 chartDiv  text-[var(--text-color)]">
+  <div class="row chartRow">
+    <ng-container *ngIf="datasource?.Tags_Data?.length > 0; else noGauge">
+      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mb-4 rounded-lg   border border-[var(--input-enable-border)]" *ngFor="let item of datasource.Tags_Data;let i=index">
+        <div class=" shadow-[var(--card-shadow)] 
+    h-full   cursor-pointer px-0.5
+    hover:border-orange-500 hover:shadow-orange-500/40
+    transition-all duration-200" (dblclick)="getBarData($event,item,i);openModal(template)">
+          <div class=" text-[var(--text-color)]" #myTestDiv>
+            <div id="{{'g'+i}}" class="m-t-10 chartDiv  text-[var(--text-color)]">
+            </div>
+            <div class="value_span d-flex  text-[var(--text-color)]">
+              <span>{{item.Process_Values.toFixed(2)}}</span>
+            </div>
           </div>
-          <div class="value_span d-flex  text-[var(--text-color)]">
-            <span>{{item.Process_Values.toFixed(2)}}</span>
+          <div class="text-[var(--text-color)] text-sm text-center mt-2">
+            {{item.Generic_Description}}
           </div>
-        </div>
-        <div class="text-[var(--text-color)] text-sm text-center mt-2">
-          {{item.Generic_Description}}
         </div>
       </div>
-    </div>
+    </ng-container>
+    <ng-template #noGauge>
+      <div class="col-12 text-center text-gray-500 py-8">
+        No gauge data available
+      </div>
+    </ng-template>
   </div>
 </div>
 
