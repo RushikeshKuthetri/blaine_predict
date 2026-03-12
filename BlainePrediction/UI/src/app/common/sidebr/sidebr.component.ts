@@ -19,7 +19,7 @@ export interface MenuItem {
 export const MENU_ITEMS: MenuItem[] = [
  { name: 'Mimics', icon: 'settings', path: '/mimics', openInNewTab: false},
   { name: 'Data Download', icon: 'download', path: '/datadownload' , openInNewTab: false},
-  { name: 'Trends', icon: 'trend', path: "https://dev.d24ohd8z0zwg7d.amplifyapp.com/mimics/viewtrends" ,openInNewTab: false},
+  { name: 'Trends', icon: 'trend', path: "mimics/viewtrends" ,openInNewTab: false},
   { name: 'Report', icon: 'report', path: "https://dev.d24ohd8z0zwg7d.amplifyapp.com/reports" ,
          openInNewTab: true
 },

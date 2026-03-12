@@ -384,7 +384,7 @@
       <!-- table and inputs -->
       <div class="w-1/3 md:w-1/3 sm:w-full  ">
         <div
-          class="rounded-lg border border-[var(--form-border)] bg-[var(--input-enable-bg)] h-full flex flex-col shadow-sm overflow-hidden">
+          class="rounded-lg border border-[var(--form-border)] h-full flex flex-col shadow-sm overflow-hidden">
 
           <!-- Card Title -->
           <h6
@@ -393,10 +393,10 @@
           </h6>
 
           <!-- Input Row -->
-          <div class="flex gap-2 px-3 py-2">
+          <div class="flex gap-2 px-2 py-2">
 
             <!-- Number Input -->
-            <input type="number" class="w-1/3 min-h-[29px] px-2 text-[13px] rounded-lg
+            <input type="number" class="w-1/3 min-h-[29px] px-2 text-[13px] rounded-lg 
                bg-[var(--input-enable-bg)]
                border border-[var(--input-enable-border)]
                text-[var(--select-input-value)]
@@ -434,9 +434,9 @@
           </div>
 
           <!-- Table -->
-          <div class="overflow-y-auto flex-1  ">
+          <div class="overflow-y-auto flex-1 mx-2 rounded-lg rounded-b-lg ">
 
-            <table *ngIf="tableData && tableData.length > 0" class="w-full text-sm overflow-y-auto">
+            <table *ngIf="tableData && tableData.length > 0" class="w-full text-sm overflow-y-auto border border-[var(--form-border) rounded-lg rounded-b-lg">
 
               <thead class="bg-gradient-to-r from-orange-400 to-orange-300 text-black">
                 <tr>
